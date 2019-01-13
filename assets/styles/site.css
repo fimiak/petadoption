@@ -69,29 +69,112 @@ h4 {
   max-width: 1280px;
 }
 
-.primary-list {
+.grid {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(auto, 1fr);
-  flex-wrap: wrap;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 320px));
+  justify-content: center;
   list-style: none;
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
 }
 
-.primary-list li {
-  background: #eee;
-  border: 2px solid #000;
+.grid li,
+.grid__item {
+  background: #e8f5e9;
+  overflow: hidden;
   padding: 15px;
   text-align: center;
 }
 
-.primary-list li:hover {
-  border: 2px solid #c00;
+.grid li:hover img,
+.grid__item:hover .grid__image {
+  opacity: 0.75;
 }
 
-.primary-list-image {
+.grid__image {
+  border: 2px solid #000;
+  max-height: 200px;
   max-width: 450px;
-  max-height: 450px;
+  transition: opacity 200ms;
+}
+
+.site-overlay {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.67);
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+.site-overlay.active {
+  display: flex;
+}
+
+.site-overlay__button {
+  align-self: center;
+  background: #c8e6c9;
+  border: 2px solid #000;
+  font-weight: bold;
+  margin: 10px auto;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: 200ms;
+}
+
+.site-overlay__button:hover {
+  background: #a0b8a0;
+}
+
+.site-overlay__button:active {
+  background: #97b498;
+}
+
+.site-overlay__button:active,
+.site-overlay__button:focus {
+  outline: none;
+}
+
+.site-overlay__close {
+  color: rgba(255, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 28px;
+  padding: 10px;
+  position: fixed;
+  right: 15px;
+  top: 5px;
+  transition: 200ms;
+}
+
+.site-overlay__close:hover {
+  color: rgba(255, 0, 0, 1);
+}
+
+.site-overlay__container {
+  background: #e8f5e9;
+  border: 2px solid #000;
+}
+
+.site-overlay__image {
+  border-bottom: 2px solid #000;
+  max-height: 500px;
+  max-width: 500px;
+}
+
+.site-overlay__info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+
+.site-overlay__info:nth-child(2) {
+  padding: 5px 10px 0;
+}
+
+.site-overlay__info:last-child {
+  justify-content: center;
 }
