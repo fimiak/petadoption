@@ -4,10 +4,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const data = require('./../assets/data/dogs.json');
-/* json is also being hosted on a free mlab server
-const mongoose = require('mongoose');
-const mongoDB = 'mongodb://mongodb://tjg:practice1@ds255784.mlab.com:55784/adoption';
-*/
+/* json is also being hosted on a free mlab server */
 
 /* Set headers for CORS requests on local server */
 app.use(function(req, res, next) {

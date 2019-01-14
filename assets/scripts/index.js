@@ -43,7 +43,8 @@ class gridItemFetch {
       });
   }
 }
-const gridItemList = new gridItemFetch('http://localhost:3000/data', document.getElementsByClassName('grid')[0]); // Declare gridItemList
+const gridItemList = new gridItemFetch('https://api.myjson.com/bins/d75zc', document.getElementsByClassName('grid')[0]); // JSON is being temporarily hosted via myjson.com to bypass backend
+/* Change https://api.myjson.com/bins/d75zc to http://localhost:3000/data and run npm start in /server directory to run localserver */
 gridItemList.fetchData(); // Runs fetch on initial page load, would be replaced by something like a componentDidMount in React
 
 /* Overlay Controls & Event listeners */
