@@ -1,4 +1,4 @@
-console.log('loaded');
+/* Primary Javascript file for Pet Adoption service */
 
 /* Create element from params */
 function createNode(element) {
@@ -10,28 +10,68 @@ function append(parent, el) {
   return parent.appendChild(el);
 }
 
-fetch('http://localhost:3000/data', { mode: 'no-cors' }).then(response => {
-  const dogs = response.json();
-  console.log(dogs);
-  return dogs.map(dog => {
-    let li = createNode('li'),
-      img = createNode('img');
-    img.src = dog.image;
-    append(li, img);
-    append(ul, li);
+/* Fetch data and append li for each JSON item */
+const url = 'http://localhost:3000/data';
+const ul = document.getElementsByClassName('grid')[0];
+
+function fetchData() {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      let dogsList = data.dogs;
+      return dogsList.map(dog => {
+        let li = createNode('li');
+        li.className = 'grid__item';
+        let div = createNode('div');
+        let anchor = createNode('a');
+        anchor.href = '#';
+        let img = createNode('img');
+        img.className = 'grid__image';
+        img.src = `.${dog.image}`;
+        append(anchor, img);
+        append(div, anchor);
+        append(li, div);
+        append(ul, li);
+        overlayControls();
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
+fetchData();
+
+/* Event listeners to open/close overlay */
+function overlayControls() {
+  const overlay = document.getElementsByClassName('site-overlay')[0];
+  const overlayContainer = document.getElementsByClassName('site-overlay__container')[0];
+  const closeOverlay = document.getElementsByClassName('site-overlay__close')[0];
+  let overlayImg = document.getElementsByClassName('site-overlay__image')[0];
+  let gridItems = [...document.querySelectorAll('.grid__item div a')];
+  let overlayTitle = document.getElementsByClassName('site-overlay__info-header')[0];
+
+  gridItems.map(el => {
+    // Map event listener to grid items
+    el.addEventListener('click', () => {
+      const randomDescriptionIndex = Math.floor(Math.random() * Object.keys(descriptions.dogs).length);
+      overlayImg.src = el.firstChild.src;
+      overlayTitle.firstChild.textContent = descriptions.dogs[randomDescriptionIndex].name; // Will put random dog name into the overlay when clicked */
+      // TODO: Site overlay button name
+      // TODO: Site overlay description
+      let containerWidth = overlayImg.width;
+      overlayContainer.setAttribute('style', `width: ${containerWidth}`);
+      overlay.classList.add('active');
+    });
   });
-});
 
-/* add event listener on click to open overlay */
-
-let gridItems = [...document.querySelectorAll('.grid__item div a')];
-gridItems.map(el => {
-  el.addEventListener('click', () => {
-    document.getElementsByClassName('site-overlay')[0].classList.add('active');
+  closeOverlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
   });
-});
+}
 
-document.getElementsByClassName('site-overlay__close')[0].addEventListener('click', () => {
-  document.getElementsByClassName('site-overlay')[0].classList.remove('active');
-  console.log(document.getElementsByClassName('site-overlay')[0].classList);
+/* Load more data points through additional fetch requests */
+const loadBtn = document.getElementsByClassName('grid-load')[0];
+loadBtn.addEventListener('click', () => {
+  fetchData();
 });

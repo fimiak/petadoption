@@ -1,13 +1,11 @@
 /* Globals */
 
-* {
-  box-sizing: border-box;
-}
-
 :root {
   --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-serif: Georgia, serif;
-  --color-secondary: #333;
+  --color-primary: #cac5c0;
+  --color-secondary: #b4afab;
+  --color-background: #ede9e6;
   --color-link: #635ac7;
 
   font-family: var(--font-sans);
@@ -15,8 +13,12 @@
   line-height: 1.5;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #fff;
+  background: #f9f8f7;
   margin: 0;
   font-size: 16px;
 }
@@ -27,18 +29,7 @@ a {
 
 h1 {
   font-size: 2rem;
-}
-
-h3 {
-  color: #333;
-  font-size: 1.4rem;
-  margin: 0;
-}
-
-h4 {
-  color: #aaa;
-  font-size: 1.3rem;
-  margin: 0;
+  text-transform: uppercase;
 }
 
 /* Snippets */
@@ -57,8 +48,10 @@ h4 {
 }
 
 .site-footer {
+  background: var(--color-primary);
   color: var(--color);
   font-family: var(--font-serif);
+  padding: 15px 0;
   text-align: center;
 }
 
@@ -75,28 +68,51 @@ h4 {
   grid-template-columns: repeat(auto-fit, minmax(max-content, 320px));
   justify-content: center;
   list-style: none;
-  margin: 10px 0;
+  margin: 15px 0;
   padding: 0;
 }
 
-.grid li,
 .grid__item {
-  background: #e8f5e9;
+  background: var(--color-background);
   overflow: hidden;
   padding: 15px;
   text-align: center;
 }
 
-.grid li:hover img,
 .grid__item:hover .grid__image {
   opacity: 0.75;
 }
 
 .grid__image {
-  border: 2px solid #000;
+  backface-visibility: hidden;
   max-height: 200px;
   max-width: 450px;
   transition: opacity 200ms;
+}
+
+.grid-load {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.grid-load__button {
+  background: var(--color-background);
+  border: 0;
+  padding: 10px 20px;
+}
+
+.grid-load__button:hover {
+  background: var(--color-primary);
+}
+
+.grid-load__button:active {
+  background: var(--color-secondary);
+}
+
+.grid-load__button:active,
+.grid-load__button:focus {
+  outline: none;
 }
 
 .site-overlay {
@@ -107,6 +123,7 @@ h4 {
   height: 100%;
   justify-content: center;
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 99;
 }
@@ -117,21 +134,22 @@ h4 {
 
 .site-overlay__button {
   align-self: center;
-  background: #c8e6c9;
-  border: 2px solid #000;
+  background: var(--color-background);
+  border: 1px solid var(--color-secondary);
+  border-radius: 3px;
   font-weight: bold;
   margin: 10px auto;
-  padding: 10px 20px;
+  padding: 10px 25px;
   text-transform: uppercase;
   transition: 200ms;
 }
 
 .site-overlay__button:hover {
-  background: #a0b8a0;
+  background: var(--color-secondary);
 }
 
 .site-overlay__button:active {
-  background: #97b498;
+  background: var(--color-secondary);
 }
 
 .site-overlay__button:active,
@@ -140,39 +158,59 @@ h4 {
 }
 
 .site-overlay__close {
-  color: rgba(255, 0, 0, 0.8);
+  color: #000;
   cursor: pointer;
-  font-size: 28px;
-  padding: 10px;
-  position: fixed;
-  right: 15px;
-  top: 5px;
-  transition: 200ms;
+  font-size: 1.25rem;
+  opacity: 0.67;
+  padding: 7px 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  transition: 300ms;
 }
 
 .site-overlay__close:hover {
-  color: rgba(255, 0, 0, 1);
+  opacity: 1;
 }
 
 .site-overlay__container {
-  background: #e8f5e9;
-  border: 2px solid #000;
+  align-items: center;
+  background: var(--color-background);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+  border-top: 5px solid var(--color-primary);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 450px;
 }
 
 .site-overlay__image {
-  border-bottom: 2px solid #000;
-  max-height: 500px;
-  max-width: 500px;
+  border-bottom: 1px solid #000;
+  max-height: 450px;
+  max-width: 100%;
 }
 
 .site-overlay__info {
   display: flex;
+  font-size: .9rem;
   justify-content: space-between;
-  padding: 0px 10px;
+  padding: 5px 10px;
+  width: 100%;
 }
 
-.site-overlay__info:nth-child(2) {
+.site-overlay__info-header {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: bold;
+}
+
+.site-overlay__info:nth-child(3) {
   padding: 5px 10px 0;
+}
+
+.site-overlay__info:nth-child(4) {
+  padding-bottom: 10px;
 }
 
 .site-overlay__info:last-child {
