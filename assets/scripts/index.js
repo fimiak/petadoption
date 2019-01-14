@@ -1,4 +1,4 @@
-/* Primary Javascript file for Pet Adoption service */
+/* Primary Javascript file for Asana Pet Adoption service */
 
 class gridItemFetch {
   /* url is pointed to local server, which must be running. In console try npm start for local server */
@@ -27,14 +27,14 @@ class gridItemFetch {
             li = this.createNode('li'),
             anchor = this.createNode('a'),
             img = this.createNode('img');
-          li.className = 'grid__item';
+          li.className = 'grid-item';
           anchor.href = '#'; // Set href to enable anchor click
-          img.className = 'grid__image';
+          img.className = 'grid-image';
           img.src = `.${dog.image}`; // Added the . to point to correct path
           this.append(anchor, img);
           this.append(div, anchor);
           this.append(li, div);
-          this.append(this.ul, li); // Builds each mapped grid__item component and appends it to the end of the grid list
+          this.append(this.ul, li); // Builds each mapped grid-item component and appends it to the end of the grid list
           return overlayControls(); // run overlayControls() to then map event listeners over each fetched grid item
         });
       })
@@ -53,7 +53,7 @@ function overlayControls() {
     overlayContainer = document.getElementsByClassName('site-overlay__container')[0],
     closeOverlay = document.getElementsByClassName('site-overlay__close')[0];
   let overlayImg = document.getElementsByClassName('site-overlay__image')[0],
-    gridItems = [...document.querySelectorAll('.grid__item div a')],
+    gridItems = [...document.querySelectorAll('.grid-item div a')],
     overlayTitle = document.getElementsByClassName('site-overlay__info-header')[0],
     overlayDescription = document.getElementsByClassName('site-overlay__info-description')[0],
     overlayBtn = document.getElementsByClassName('site-overlay__button')[0];
@@ -86,3 +86,18 @@ const loadBtn = document.getElementsByClassName('grid-load')[0];
 loadBtn.addEventListener('click', () => {
   gridItemList.fetchData();
 });
+
+/* Grid resize controls */
+function gridResize() {
+  const grid = document.getElementsByClassName('grid')[0];
+  let gridSelectors = document.querySelectorAll('.grid-selector a');
+  gridSelectors = [...gridSelectors]; // HTML collection to array
+  gridSelectors.map((selector, index) => {
+    selector.addEventListener('click', item => {
+      index === 0 ? grid.classList.add('small') : grid.classList.remove('small'); // Index 0 indicates the small grid has been clicked
+      gridSelectors.forEach(selector => selector.classList.remove('active'));
+      selector.classList.add('active');
+    }); // Toggles class on grid depending on which grid selector clicked
+  });
+}
+gridResize();

@@ -72,22 +72,53 @@ h1 {
   padding: 0;
 }
 
-.grid__item {
+/* Small grid CSS */
+.grid.small {
+  grid-template-columns: repeat(auto-fit, minmax(max-content, 180px));
+}
+
+.grid.small .grid-image {
+  max-height: 150px;
+  max-width: 150px;
+  width: 100%;
+}
+/* */
+
+.grid-item {
   background: var(--color-background);
   overflow: hidden;
   padding: 15px;
   text-align: center;
 }
 
-.grid__item:hover .grid__image {
+.grid-item:hover .grid-image {
   opacity: 0.75;
 }
 
-.grid__image {
+.grid-image {
   backface-visibility: hidden;
   max-height: 200px;
   max-width: 450px;
   transition: opacity 200ms;
+}
+
+.grid-selector {
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.grid-selector a {
+  color: var(--color-primary);
+  transition: 200ms;
+}
+
+.grid-selector a.active {
+  color: var(--color-secondary);
+}
+
+.grid-selector a:hover,
+.grid-selector a:active {
+  color: var(--color-secondary);
 }
 
 .grid-load {
@@ -193,7 +224,7 @@ h1 {
 
 .site-overlay__info {
   display: flex;
-  font-size: .9rem;
+  font-size: 0.9rem;
   justify-content: space-between;
   padding: 5px 10px;
   width: 100%;
