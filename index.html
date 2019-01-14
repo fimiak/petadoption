@@ -1,53 +1,63 @@
 <!-- Put your final HTML here -->
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A local pet adoption agency specializing in dogs. Find your new furry frend!" />
-  <meta name="keywords" content="pet adoption, dog adoption, dogs, rescue, pet rescue, cute dogs, puppy adoption">
-  <title>The Adoption Project: Find Your New Furry Friend</title>
-  <link
-    rel="stylesheet"
-    href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" type="text/css" href="./assets/styles/site.css" />
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A local pet adoption agency specializing in dogs. Find your new furry frend!" />
+    <meta name="keywords" content="pet adoption, dog adoption, dogs, rescue, pet rescue, cute dogs, puppy adoption" />
+    <title>The Adoption Project: Find Your New Furry Friend</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/styles/site.css" />
+  </head>
 
-<body>
-<header class="site-header">
-  <h1>Puppy image gallery</h1>
-  <blockquote class="site-header__quote">
-    <p>A dog will teach you unconditional love. If you can have that in your life, things won't be too bad.</p>
-    <cite>&mdash;Robert Wagner</cite>
-  </blockquote>
-</header>
+  <body>
+    <header class="site-header">
+      <h1>Puppy image gallery</h1>
+      <blockquote class="site-header__quote">
+        <p>A dog will teach you unconditional love. If you can have that in your life, things won't be too bad.</p>
+        <cite>&mdash;Robert Wagner</cite>
+      </blockquote>
+    </header>
 
-<div class="container">
-  <ul class="grid">
-    <!-- Data recovered from server -->
-  </ul>
+    <div class="container">
+      <ul class="grid">
+        <!-- Data recovered from server -->
+      </ul>
 
-  <div class="grid-load"><button class="grid-load__button">Load More</button></div>
-</div>
+      <div class="grid-load"><button class="grid-load__button">Load More</button></div>
+    </div>
 
-<div class="site-overlay">
-  <div class="site-overlay__container">
-    <div class="site-overlay__close"><i class="fas fa-times"></i></div>
-    <div class="site-overlay__info"><span class="site-overlay__info-header">Fido</span></div>
-    <img class="site-overlay__image" src="./assets/images/raw/1.jpeg" />
-    <div class="site-overlay__info"><span>Here we have Fido, he is a sweet puppy dog looking for his forever family. He enjoys long walks and requires a healthy amount of play time.</span></div>
-    <div class="site-overlay__info"><a href="mailto:fake@adoptions.com?subject=Dog Adoption Application&body=Hello, I am interested in adopting a dog." alt="Adoption Email"><button class="site-overlay__button">Apply to adopt Fido</button></a></div>
-  </div>
-</div>
+    <div class="site-overlay">
+      <div class="site-overlay__container">
+        <div class="site-overlay__close"><i class="fas fa-times"></i></div>
+        <div class="site-overlay__info"><span class="site-overlay__info-header">Fido</span></div>
+        <img class="site-overlay__image" src="./assets/images/raw/1.jpeg" />
+        <div class="site-overlay__info">
+          <span class="site-overlay__info-description"
+            >Here we have Fido, he is a sweet puppy dog looking for his forever family. He enjoys long walks and
+            requires a healthy amount of play time.</span
+          >
+        </div>
+        <div class="site-overlay__info">
+          <a
+            href="mailto:fake@adoptions.com?subject=Dog Adoption Application&body=Hello, I am interested in adopting."
+            alt="Adoption Email"
+            ><button class="site-overlay__button">Apply to adopt Fido</button></a
+          >
+        </div>
+      </div>
+    </div>
 
-<footer class="site-footer">
-  <p>Built by a wonderful developer for Asana. <i class="fas fa-dog"></i></p>
-</footer>
+    <footer class="site-footer">
+      <p>Built by a wonderful developer for Asana. <i class="fas fa-dog"></i></p>
+    </footer>
 
-<script src="./assets/data/descriptions.js"></script>
-<script src="./assets/scripts/index.js"></script>
-
-</body>
+    <script src="./assets/data/descriptions.js"></script>
+    <script src="./assets/scripts/index.js"></script>
+  </body>
 </html>
