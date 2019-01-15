@@ -247,3 +247,9 @@ h1 {
 .site-overlay__info:last-child {
   justify-content: center;
 }
+
+@media (max-width: 599px) {
+  .site-overlay__container {
+    max-width: 300px;
+  }
+}
