@@ -226,6 +226,7 @@ h1 {
   display: flex;
   font-size: 0.9rem;
   justify-content: space-between;
+  min-height: 32px;
   padding: 5px 10px;
   width: 100%;
 }
